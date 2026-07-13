@@ -3,7 +3,7 @@ export function Spinner() {
     <div
       role="status"
       aria-label="Loading"
-      className="h-6 w-6 animate-spin rounded-full border-2 border-current border-t-transparent text-slate-400"
+      className="text-muted-foreground h-6 w-6 animate-spin rounded-full border-2 border-current border-t-transparent"
     />
   );
 }
