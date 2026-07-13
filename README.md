@@ -72,8 +72,8 @@ Open [http://localhost:3000](http://localhost:3000).
 
 1. Add types to `src/types`.
 2. Create `src/features/<resource>/services.ts` with plain functions calling `apiClient` (from `src/lib/axios.ts`).
-3. Create `src/features/<resource>/thunk.ts` with `createAsyncThunk` actions that call those services.
-4. Create `src/features/<resource>/slice.ts` with `createSlice` + `extraReducers` handling the thunks.
+3. Create `src/features/<resource>/thunk.ts` with `createAsyncThunk` actions that call those services. For any "fetch list/detail" thunk, add a `condition` using `shouldSkipFetch` from `src/store/thunk-helpers.ts` so repeated dispatches don't refetch data that's already loading or loaded — see `features/posts/thunk.ts` for the one-line pattern.
+4. Create `src/features/<resource>/slice.ts` with `createSlice` + `extraReducers` handling the thunks. Type the `status` field as `AsyncStatus` (from `src/store/thunk-helpers.ts`) instead of a local union.
 5. Register the reducer in `src/store/store.ts`.
 6. Use `useAppDispatch` / `useAppSelector` (`src/store/hooks.ts`) in your components.
 

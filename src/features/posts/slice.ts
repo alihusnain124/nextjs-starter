@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createPost, fetchPosts } from "./thunk";
+import type { AsyncStatus } from "@/store/thunk-helpers";
 import type { Post } from "@/types";
 
-interface PostsState {
+export interface PostsState {
   items: Post[];
-  status: "idle" | "loading" | "succeeded" | "failed";
+  status: AsyncStatus;
   error: string | null;
 }
 
